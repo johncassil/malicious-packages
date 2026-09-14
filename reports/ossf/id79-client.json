@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.7.4",
+  "modified": "2026-09-14T00:00:00Z",
+  "published": "2026-09-14T00:00:00Z",
+  "details": "id79-client@1.1.79 is a remote-code stager disguised as a device-info utility. Importing the package runs initialize() in index.js, which spawns a detached node loader.js; loader.js fetches https://api.npoint.io/24c12c4b66a29747764f, base64-decodes the code field and runs it through new Function with the module's require, so the operator can change the executed payload at any time. It runs on import, not from an install script. The only published version was unpublished from npm on 2026-09-14.",
+  "affected": [{"package": {"ecosystem": "npm", "name": "id79-client"}, "versions": ["1.1.79"]}],
+  "references": [{"type": "PACKAGE", "url": "https://www.npmjs.com/package/id79-client"}],
+  "credits": [{"name": "pkgwarden", "type": "FINDER", "contact": ["https://pkgwarden.com"]}],
+  "database_specific": {"iocs": {"urls": ["https://api.npoint.io/24c12c4b66a29747764f"], "files": [{"paths": ["package/loader.js"], "source": "PACKAGE_ARCHIVE", "note": "fetches api.npoint.io and executes the base64 code field via new Function", "digests": {"sha256": "0bca5c92870c78656fe1d30d69a05af2486c6c36672b5172c249af4106c096b7"}}, {"paths": ["package/init.js"], "source": "PACKAGE_ARCHIVE", "note": "spawns a detached node loader.js on import", "digests": {"sha256": "5e779c0c5c92005241a49d88604d106d53d102a3d6b942c4140410d247a9220c"}}]}}
+}
